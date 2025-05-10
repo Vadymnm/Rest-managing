@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: my_project0_postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Telcom123
+      POSTGRES_DB: Rest_managing
+    ports:
+      - "5432:5432"
+
+  web:
+    container_name: my_project0_app
+    build: .
+    environment:
+      PORT: 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
